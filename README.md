@@ -109,4 +109,18 @@ Build a simple full-stack Django content planner with CRUD operations and clean 
 ---
 
 ## Screenshots
-UI screenshots are available in the `screenshots/` folder.
+
+### Home Page
+![Home Page](screenshots/home.png)
+
+### Ideas List
+![Ideas List](screenshots/list.png)
+
+### Create Idea
+![Create Idea](screenshots/create.png)
+
+### Update Idea
+![Update Idea](screenshots/update.png)
+
+### Delete Confirmation
+![Delete Confirmation](screenshots/delete.png)
