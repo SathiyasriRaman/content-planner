@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Ideas</title>
+    <link rel="stylesheet" href="{% static 'ideas/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>All Ideas</h2>
+
+    <div class="top-action">
+        <a href="/ideas/create/" class="btn btn-primary">＋ Create Idea</a>
+    </div>
+
+    {% for idea in ideas %}
+    <div class="card">
+        <div class="idea-title">
+            {{ idea.title }}
+            <span class="status">{{ idea.status }}</span>
+        </div>
+
+        <div class="idea-desc">
+            {{ idea.description }}
+        </div>
+        {% if idea.scheduled_date %}
+<p style="color:#4da3ff; font-size:13px;">
+    Scheduled for: {{ idea.scheduled_date }}
+</p>
+{% endif %}
+
+        <div class="actions">
+            <a href="/ideas/update/{{ idea.id }}/" class="btn btn-outline">Edit</a>
+            <a href="/ideas/delete/{{ idea.id }}/" class="btn btn-outline">Delete</a>
+        </div>
+    </div>
+    {% empty %}
+        <p class="empty">No ideas yet. Click “Create Idea” to begin.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>

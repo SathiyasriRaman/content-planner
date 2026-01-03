@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Idea</title>
+    <link rel="stylesheet" href="{% static 'ideas/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Update Idea</h2>
+
+    <div class="card">
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="title" value="{{ idea.title }}" required>
+            <textarea name="description">{{ idea.description }}</textarea>
+
+            <select name="status">
+                <option value="draft" {% if idea.status == 'draft' %}selected{% endif %}>Draft</option>
+                <option value="scheduled" {% if idea.status == 'scheduled' %}selected{% endif %}>Scheduled</option>
+                <option value="published" {% if idea.status == 'published' %}selected{% endif %}>Published</option>
+            </select>
+            <label>Scheduled Date</label>
+            <input type="date" name="scheduled_date" value="{{ idea.scheduled_date|date:'Y-m-d' }}">
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+
+    <div class="top-action">
+        <a href="/ideas/" class="btn btn-secondary">Back</a>
+    </div>
+</div>
+
+</body>
+</html>
